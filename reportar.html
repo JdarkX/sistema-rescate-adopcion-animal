@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de captura validado para reportar un nuevo caso de rescate animal.">
+    <meta name="author" content="Jhonny Miguel García Ponce">
+    <title>Reportar Caso | Sistema de Control de Rescate y Adopción Animal</title>
+</head>
+<body>
+    <header>
+        <img src="assets/img/logo-refugio.png" alt="Logotipo del Centro de Protección y Rescate Animal Manabí" width="90" height="90">
+        <h1>Sistema de Control de Rescate y Adopción Animal</h1>
+        <p>Módulo de Recepción de Reportes Ciudadanos y Activación de Alertas de Emergencia</p>
+    </header>
+
+    <nav aria-label="Navegación principal">
+        <h2>Menú de Navegación</h2>
+        <ul>
+            <li><a href="index.html" title="Ir al panel principal del refugio">Inicio (Dashboard)</a></li>
+            <li><a href="reportar.html" title="Registrar un nuevo reporte de rescate animal">Reportar Caso de Rescate</a></li>
+            <li><a href="rescates.html" title="Consultar el listado de casos y estados de adopción">Listado de Rescates y Adopciones</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Registro de Nuevo Caso de Rescate Animal</h2>
+            <p>Complete el siguiente formulario para abrir un nuevo expediente en el sistema. Al enviar este registro, el sistema clasificará la especie y emitirá una notificación automática a los voluntarios de campo y médicos veterinarios de turno.</p>
+
+            <article>
+                <h3>Formulario Oficial de Captura de Datos</h3>
+                <form action="rescates.html" method="get">
+                    <fieldset>
+                        <legend>1. Identificación y Clasificación del Ejemplar</legend>
+
+                        <p>
+                            <label for="titulo_caso"><strong>Título del Caso o Nombre Provisional (*):</strong></label><br>
+                            <input type="text" id="titulo_caso" name="titulo_caso" placeholder="Ej. Canino herido en Parque La Rotonda / Max" required minlength="4" maxlength="80" size="50">
+                        </p>
+
+                        <p>
+                            <label for="categoria_especie"><strong>Categoría de Especie (*):</strong></label><br>
+                            <select id="categoria_especie" name="categoria_especie" required>
+                                <option value="">-- Seleccione una categoría --</option>
+                                <option value="perros">Perros</option>
+                                <option value="gatos">Gatos</option>
+                                <option value="fauna_silvestre">Fauna Silvestre</option>
+                            </select>
+                        </p>
+
+                        <p>
+                            <label for="fecha_hallazgo"><strong>Fecha del Hallazgo (*):</strong></label><br>
+                            <input type="date" id="fecha_hallazgo" name="fecha_hallazgo" required>
+                        </p>
+
+                        <p>
+                            <label for="ubicacion_rescate"><strong>Ubicación Geográfica / Sector del Hallazgo (*):</strong></label><br>
+                            <input type="text" id="ubicacion_rescate" name="ubicacion_rescate" placeholder="Ej. Av. Universitaria y calle Che Guevara, Portoviejo" required minlength="5" maxlength="120" size="50">
+                        </p>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>2. Valoración Preliminar y Nivel de Urgencia Médica</legend>
+                        <p>Seleccione el nivel de prioridad clínica para disparar la alerta correspondiente al equipo médico:</p>
+
+                        <p>
+                            <input type="radio" id="urgencia_alta" name="nivel_urgencia" value="Alta" required>
+                            <label for="urgencia_alta"><strong>Alta:</strong> Riesgo vital inmediato, atropellamiento, fracturas expuestas o hemorragia activa.</label>
+                        </p>
+
+                        <p>
+                            <input type="radio" id="urgencia_media" name="nivel_urgencia" value="Media">
+                            <label for="urgencia_media"><strong>Media:</strong> Deshidratación moderada, heridas superficiales, infecciones cutáneas o abandono reciente.</label>
+                        </p>
+
+                        <p>
+                            <input type="radio" id="urgencia_baja" name="nivel_urgencia" value="Baja">
+                            <label for="urgencia_baja"><strong>Baja:</strong> Animal estable en situación de calle que requiere resguardo preventivo y control sanitario.</label>
+                        </p>
+
+                        <p>
+                            <label for="descripcion_estado"><strong>Descripción Detallada del Estado en que se Encontró (*):</strong></label><br>
+                            <textarea id="descripcion_estado" name="descripcion_estado" rows="5" cols="60" placeholder="Describa detalladamente los síntomas visibles, comportamiento del animal, referencias exactas del lugar y condiciones del entorno..." required minlength="15" maxlength="600"></textarea>
+                        </p>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>3. Datos de Contacto del Ciudadano Reportante</legend>
+
+                        <p>
+                            <label for="nombre_reportante"><strong>Nombre Completo del Reportante (*):</strong></label><br>
+                            <input type="text" id="nombre_reportante" name="nombre_reportante" placeholder="Ej. Carlos Mendoza" required minlength="3" maxlength="80" size="40">
+                        </p>
+
+                        <p>
+                            <label for="telefono_reportante"><strong>Teléfono de Contacto (*):</strong></label><br>
+                            <input type="tel" id="telefono_reportante" name="telefono_reportante" placeholder="Ej. 0991234567" pattern="[0-9]{10}" title="Ingrese un número telefónico válido de 10 dígitos" required>
+                        </p>
+
+                        <p>
+                            <label for="correo_reportante"><strong>Correo Electrónico:</strong></label><br>
+                            <input type="email" id="correo_reportante" name="correo_reportante" placeholder="ejemplo@correo.com" size="40">
+                        </p>
+                    </fieldset>
+
+                    <p>
+                        <button type="submit">Registrar Caso y Emitir Alerta</button>
+                        <button type="reset">Limpiar Formulario</button>
+                    </p>
+                </form>
+            </article>
+        </section>
+
+        <aside>
+            <h2>Instrucciones de Seguridad Antes del Rescate</h2>
+            <ul>
+                <li>Los campos marcados con asterisco <strong>(*)</strong> son de carácter obligatorio.</li>
+                <li>Si el ejemplar pertenece a la categoría de <strong>Fauna Silvestre</strong>, evite manipularlo directamente sin equipo de protección; el personal especializado coordinará la extracción junto con la unidad ambiental.</li>
+                <li>Una vez enviado el reporte, puede verificar su ingreso en el <a href="rescates.html">Listado de Rescates y Adopciones</a>.</li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <hr>
+        <p><strong>Centro de Protección y Control de Rescate Animal - Ciudadela Bellavista, Portoviejo, Manabí, Ecuador</strong></p>
+        <p>Contacto institucional: <a href="mailto:contacto@rescateanimalmanabi.org.ec">contacto@rescateanimalmanabi.org.ec</a> | Teléfono: (05) 263-0000</p>
+        <p><small>&copy; 2026 Sistema de Control de Rescate y Adopción Animal. Desarrollado por Jhonny Miguel García Ponce - Universidad Técnica de Manabí (UTM).</small></p>
+    </footer>
+</body>
+</html>
